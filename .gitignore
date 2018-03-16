@@ -1,3 +1,6 @@
+# Pipenv files
+Pipenv*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
