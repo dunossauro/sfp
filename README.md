@@ -6,7 +6,7 @@ The idea of this lib is to be a 'minimal version' of functional features which w
 ### TODO
 
 - [ ] head
-- [ ] tail
+- [x] tail
 - [ ] pipe
 - [ ] compose
 - [ ] zipwith
