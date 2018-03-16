@@ -22,7 +22,6 @@ class testsPipe(TestCase):
         self.assertEqual(pipe(lambda x: x)(5), 5)
 
     def test_pipe_sequence_funtions_executions(self):
-        """This test fail because it is not a pipe, is a compose."""
         resul = pipe(
             str.split,
             len,
