@@ -14,6 +14,6 @@ def pipe(*args):
     return reduce(_pipe, args)
 
 
-def _pipe(prev, curr):
+def _pipe(curr, prev):
     """Callback to `reduce` function."""
     return lambda x: prev(curr(x))
