@@ -10,6 +10,9 @@ class testTail(TestCase):
         result = tail(iter([1, 2, 3, 4]))
         self.assertEqual(result, [2, 3, 4])
 
+    def test_should_reaturn_blank_sequece(self):
+        self.assertEqual(tail([]), [])
+
 
 if __name__ == '__main__':
     main()
