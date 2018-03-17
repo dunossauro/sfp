@@ -8,7 +8,7 @@ The idea of this lib is to be a 'minimal version' of functional features which w
 - [ ] head
 - [x] tail
 - [ ] last
-- [ ] pipe
+- [x] pipe
 - [ ] compose
 - [ ] zipwith
 - [ ] Functor metaclass
@@ -17,3 +17,4 @@ The idea of this lib is to be a 'minimal version' of functional features which w
 
 - [ ] coverage
 - [ ] CI
+- [ ] pypi package
