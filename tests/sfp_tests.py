@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from sfp import tail, pipe
+from sfp import tail, pipe, head
 
 
 class testTail(TestCase):
@@ -32,6 +32,20 @@ class testsPipe(TestCase):
         )('eduardo mendes')
 
         self.assertEqual(resul, 7)
+
+
+class TestHead(TestCase):
+    def test_get_head_list(self):
+        self.assertEqual(head([1, 2, 3, 4]), [1])
+        self.assertEqual(head([1, 2, 3, 4], 3), [1, 2, 3])
+
+    def test_get_head_string(self):
+        self.assertEqual(head("Olá BB!", 3), "Olá")
+        self.assertNotEqual(head("@python", 4), "@pyth")
+
+    def test_get_head_in_iterator(self):
+        """Do not get on iterators."""
+        self.assertEqual(head(iter("Olá BB!"), 3), "Olá")
 
 
 if __name__ == '__main__':
