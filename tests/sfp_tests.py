@@ -1,5 +1,6 @@
+from operator import add, sub
 from unittest import TestCase, main
-from sfp import tail, pipe
+from sfp import tail, pipe, zipwith
 
 
 class testTail(TestCase):
@@ -32,6 +33,26 @@ class testsPipe(TestCase):
         )('eduardo mendes')
 
         self.assertEqual(resul, 7)
+
+
+class TestZipWith(TestCase):
+    def test_should_concat_two_sequences_using_add(self):
+        zip_function = zipwith(add)
+        self.assertEqual(list(zip_function([1, 2, 3], [4, 5, 6])),
+                         [5, 7, 9])
+
+    def test_should_works_when_len_of_iterables_is_not_the_same(self):
+        zip_function = zipwith(sub)
+        lst_a = [0, 1, 2]
+        lst_b = [0, 1, 2, 3]
+        expected = [0, 0, 0]
+        self.assertEqual(list(zip_function(lst_a, lst_b)), expected)
+
+    def test_pipe_should_return_a_callable(self):
+        """Check if pipe is a closure."""
+        _callable = zipwith(lambda x: x)
+
+        self.assertTrue(hasattr(_callable, '__call__'))
 
 
 if __name__ == '__main__':
