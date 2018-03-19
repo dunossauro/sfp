@@ -1,4 +1,4 @@
-from operator import add, sub
+from operator import add, sub, mul
 from unittest import TestCase, main
 from sfp import tail, pipe, zipwith
 
@@ -60,6 +60,10 @@ class TestZipWith(TestCase):
         _callable = zipwith(lambda x: x)
         self.assertTrue(hasattr(_callable, '__call__'))
 
+
+    def test_should_works_when_iterables_is_blank(self):
+        zip_function = zipwith(mul)
+        self.assertEqual(list(zip_function([1, 2], [])), [])
 
 if __name__ == '__main__':
     main()
