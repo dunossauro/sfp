@@ -19,14 +19,14 @@ def _pipe(curr, prev):
     return lambda x: prev(curr(x))
 
 
-def zipwith(func: callable) -> iter:
+def zipwith(func: callable) -> callable:
     """
     Zipwith concat two sequences using a function.
 
     >>> zipwith(lambda x: x + y)([1,2,3], [4,5,6])
     """
     @wraps(func)
-    def inner(sequence_a, sequence_b):
+    def inner(sequence_a: iter, sequence_b: iter) -> iter:
         for el_a, el_b in zip(sequence_a, sequence_b):
             yield func(el_a, el_b)
     return inner
