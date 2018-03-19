@@ -41,17 +41,23 @@ class TestZipWith(TestCase):
         self.assertEqual(list(zip_function([1, 2, 3], [4, 5, 6])),
                          [5, 7, 9])
 
-    def test_should_works_when_len_of_iterables_is_not_the_same(self):
+    def test_should_works_when_len_of_first_iterables_is_greater(self):
         zip_function = zipwith(sub)
         lst_a = [0, 1, 2]
         lst_b = [0, 1, 2, 3]
         expected = [0, 0, 0]
         self.assertEqual(list(zip_function(lst_a, lst_b)), expected)
 
-    def test_pipe_should_return_a_callable(self):
-        """Check if pipe is a closure."""
-        _callable = zipwith(lambda x: x)
+    def test_should_raise_when_the_secound_iterable_is_greater(self):
+        zip_function = zipwith(sub)
+        lst_a = [0, 1, 2, 3]
+        lst_b = [0, 1, 2]
+        expected = [0, 0, 0]
+        self.assertEqual(list(zip_function(lst_a, lst_b)), expected)
 
+    def test_pipe_should_return_a_callable(self):
+        """Check if zipwith is a closure."""
+        _callable = zipwith(lambda x: x)
         self.assertTrue(hasattr(_callable, '__call__'))
 
 
