@@ -10,7 +10,7 @@ The idea of this lib is to be a 'minimal version' of functional features which w
 - [x] tail
 - [ ] last
 - [x] pipe
-- [ ] compose
+- [x] compose
 - [ ] zipwith
 - [ ] Functor metaclass
 
