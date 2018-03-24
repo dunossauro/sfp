@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from sfp import tail, pipe
+from sfp import tail, pipe, compose
 
 
 class testTail(TestCase):
@@ -32,6 +32,23 @@ class testsPipe(TestCase):
         )('eduardo mendes')
 
         self.assertEqual(resul, 7)
+
+
+class testsCompose(TestCase):
+    def test_compose_should_return_a_callable(self):
+        composed_functions = compose(lambda x: x, lambda y: y)
+
+        self.assertTrue(hasattr(composed_functions, '__call__'))
+
+    def test_compose_should_return_same_value(self):
+        self.assertEqual(compose(lambda x: x)('z4r4tu5str4'),
+                         'z4r4tu5str4')
+
+    def test_compose_verifying_the_execution_order(self):
+        foo = lambda x: x * x
+        bar = lambda x: x + 42
+
+        self.assertEqual(compose(foo, bar)(7), foo(bar(7)))
 
 
 if __name__ == '__main__':
